@@ -5,6 +5,13 @@
             class="bg-blue-400 p-2 rounded-md text-white text-sm">Tambah Tulisan</a>
         </h2>
     </x-slot>
+    <x-slot name="headerRight">
+        <form action="{{ route('member.blogs.index') }}" method="get">
+            <x-text-input id='search' name='search' type='text' class="p-1 m-0 md:w-72 w-80 mt-3 md:mt-0" 
+                value="{{ request('search') }}" placeholder='masukan kata kunci ...'/>
+            <x-secondary-button class="p-1" type='submit'>cari</x-secondary-button>    
+        </form>
+    </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -34,8 +41,10 @@
                                 <td class="border px-6 py-4 text-center text-sm hidden lg:table-cell">{{ $value->status }}</td>
                                 <td class="border px-6 py-4 text-center">
                                     <a href='{{ route("member.blogs.edit",['post'=>$value->id]) }}' class="text-blue-600 hover:text-blue-400 px-2">edit</a>
-                                    <a href='' class="text-blue-600 hover:text-blue-400 px-2">lihat</a>
-                                    <form class="inline"method="post">
+                                    <a target='blank'href="{{ route('blog-detail',['slug'=>$value->slug]) }}" class="text-blue-600 hover:text-blue-400 px-2">lihat</a>
+                                    <form class="inline" onsubmit="return confirm('Yakin akan menghapus data ini?')" method="post" action="{{ route('member.blogs.destroy',['post'=>$value->id]) }}">
+                                        @csrf
+                                        @method('delete')
                                         <button type=' submit' class='text-red-600 hover:text-red-400 px-2'>
                                             hapus
                                         </button>

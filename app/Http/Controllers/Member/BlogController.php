@@ -6,22 +6,27 @@ use App\Http\Controllers\Controller;
 use App\Models\post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\str;
 
-use function PHPUnit\Framework\fileExists;
 
 class BlogController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
         $user = Auth::user();
-        $data = post::where('user_id',$user->id)->orderBy('id','desc')->paginate(5);
+        $search = $request->search; 
+        $data = post::where('user_id',$user->id)->where(function($query) use($search){
+            if($search){
+            $query->where('title','like',"%{$search}%")->orWhere('content','like',"%{$search}%");
+        }
+        })->orderBy('id','desc')->paginate(5)->withQueryString(); 
         return view('member.blogs.index',compact('data'));
     }
 
@@ -105,6 +110,7 @@ class BlogController extends Controller
      */
     public function edit(post $post)
     {
+        Gate::authorize('edit',$post);
         $data = $post;
         return view('member.blogs.edit',compact('data'));
     }
@@ -146,6 +152,7 @@ class BlogController extends Controller
         $destination_path = public_path(getenv('CUSTOM_THUMBNAIL_LOCATION'));
         $image->move($destination_path, $image_name);
         $data['thumbnail'] = $image_name;
+        // ini gk jelas, logic konyol, jelek buat nyimpen data foto bisa berat"in data web
     }
 
     $data = [
@@ -172,7 +179,19 @@ class BlogController extends Controller
      */
     public function destroy(post $post)
     {
-        //
+        Gate::authorize('delete',$post);
+        // Construct the file path for the thumbnail
+        $filePath = public_path(getenv('CUSTOM_THUMBNAIL_LOCATION')) . "/" . $post->thumbnail;
+
+        // Check if the thumbnail file exists and delete it
+        if ($post->thumbnail && file_exists($filePath)) {
+        unlink($filePath);
+        }
+
+        // Now delete the post using the model instance
+        post::where('id', $post->id)->delete();
+
+        return redirect()->route('member.blogs.index')->with('success', 'Data berhasil dihapus ' . $post->id);
     }
 
     private function generateSlug($title,$id=null){
