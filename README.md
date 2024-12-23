@@ -1,5 +1,5 @@
 # project title
-Riverpaws
+RiverPaws
 ## About The Project
 
 kelompok 2 
