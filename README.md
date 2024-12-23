@@ -1,4 +1,4 @@
-# project title
+# Project title
 RiverPaws
 ## About The Project
 
@@ -25,7 +25,7 @@ website kami juga bisa untuk para user bisa memberikan pendapat mereka tentang b
 
 
 <!-- GETTING STARTED -->
-## penjelasa fitur dan ERD dan link hosting domain 
+## Penjelasa fitur dan ERD dan link hosting domain 
 
 Berikut adalah penjelasan fitur-fitur yang ada di website kami:
 https://docs.google.com/document/d/1FW1-YFQR3R3v4JiOJSVKp_D1oeh1yAu83kNVTbW-NFo/edit?usp=sharing 
