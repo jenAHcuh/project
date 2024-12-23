@@ -3,6 +3,7 @@ RiverPaws
 ## About The Project
 
 kelompok 2 
+<br>
 JAMES RANDOLPH CANDRA KUSUMA - 2602092825 
 <br>
 JENNYFER CALISSA IWAN - 2602082572
