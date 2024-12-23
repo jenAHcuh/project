@@ -4,7 +4,9 @@ RiverPaws
 
 kelompok 2 
 JAMES RANDOLPH CANDRA KUSUMA - 2602092825 
+<br>
 JENNYFER CALISSA IWAN - 2602082572
+<br>
 SAMUEL ANDREAS BANGUN - 2602192992
 
 ini merupakan dokumentasi dari kelompok kami
