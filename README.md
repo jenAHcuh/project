@@ -15,7 +15,7 @@ ini merupakan dokumentasi dari kelompok kami
 tugas-tugas masing-masing:
 * JAMES RANDOLPH CANDRA KUSUMA : pembuatan dokumentasi 
 * JENNYFER CALISSA IWAN : pembuatan backend dari sistem CURD / admin panel 
-* SAMUEL ANDREAS BANGUN : pembuatan front page website dari design dan isi page
+* SAMUEL ANDREAS BANGUN : pembuatan front page website dari design dan isi page dan hosting domain
 
 SDG yang kita pilih adalah SDG 14 yaitu tentang marine life 
 <br>
@@ -29,6 +29,8 @@ website kami juga bisa untuk para user bisa memberikan pendapat mereka tentang b
 
 Berikut adalah penjelasan fitur-fitur yang ada di website kami:
 https://docs.google.com/document/d/1FW1-YFQR3R3v4JiOJSVKp_D1oeh1yAu83kNVTbW-NFo/edit?usp=sharing 
+<br>
+link domain 
 <br>
 http://webprog.xyz
 
